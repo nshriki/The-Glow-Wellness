@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>The Glow Wellness</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+	<link rel="shortcut icon" href="images/tgw-fav-icon.svg">
+</head>
+<body>
+	<header>
+		<a href="TGW-Main.html" class="tgw-logo">
+			<img src="images/tgw-logo.svg">
+		</a>
+		
+		<div class="menu-group">
+			<ul class="navigation">
+				<li class="item"><a href="TGW-About.html">About</a></li>
+				<li class="item"><a href="TGW-Services.html">Services</a></li>
+				<li class="item"><a href="TGW-Blog.html">Blog</a></li>
+				<li class="item"><a href="TGW-Contact.html">Contact</a></li>
+				<li class="item"><a href="TGW-Brands.html">Brands</a></li>
+			</ul>
+			<div class="search">
+				<span class="search-icon">
+					<ion-icon name="search-outline" class="searchBtn"></ion-icon>
+					<ion-icon name="close-outline" class="closeBtn"></ion-icon>
+				</span>
+			</div>
+			<ion-icon name="menu-outline" class="menuToggle"></ion-icon>
+		</div>
+		<div class="searchBox">
+	        <input type="text" id="searchInput" placeholder="Search here...">
+	        <ul id="searchResults">
+	        	<!-- <li><a href="article1.html">Get The Glow... Spilling My Skin Secrets</a></li>
+	            <li><a href="article2.html">What to Eat If You’re Feeling Tired</a></li>
+	            <li><a href="article2.html">The Earliest Signs of Menopause</a></li> -->
+	            <!-- Search results will be displayed here -->
+	        </ul>
+	    </div>	
+	</header>
+
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+	<script>
+		let searchBtn = document.querySelector('.searchBtn');
+		let closeBtn = document.querySelector('.closeBtn');
+		let searchBox = document.querySelector('.searchBox');
+		let navigation = document.querySelector('.navigation');
+		let menuToggle = document.querySelector('.menuToggle');
+		let header = document.querySelector('header');
+
+		searchBtn.onclick = function(){
+			searchBox.classList.add('active');
+			closeBtn.classList.add('active');
+			searchBtn.classList.add('active');
+			menuToggle.classList.add('hide');
+			header.classList.remove('open');
+		}
+
+		closeBtn.onclick = function(){
+			searchBox.classList.remove('active');
+			closeBtn.classList.remove('active');
+			searchBtn.classList.remove('active');
+			menuToggle.classList.remove('hide');
+		}
+
+		menuToggle.onclick = function(){
+			header.classList.toggle('open');
+			searchBox.classList.remove('active');
+			closeBtn.classList.remove('active');
+			searchBtn.classList.remove('active');
+		}
+
+	    const articles = [
+	        { 
+	            title: "Get The Glow... Spilling My Skin Secrets", 
+	            content: "With it being my birthday month, I thought we could talk about youthfulness – particularly glowing youthful skin.", 
+	            url: "article1.html" 
+	        },
+	        { 
+	            title: "What to Eat If You’re Feeling Tired", 
+	            content: "Raise your hand if you are tired! Turns out, you’re not alone. More and more people today are suffering from the effects of burnout.", 
+	            url: "article2.html" 
+	        },
+	        { 
+	            title: "The Earliest Signs of Menopause", 
+	            content: "The earliest signs of menopause can start to appear well before you’re ready. For some women, they can show up as early as age 35.", 
+	            url: "article3.html" 
+	        }
+	    ];
+
+	    function search(query) {
+	        const results = articles.filter(article =>
+	            article.title.toLowerCase().includes(query.toLowerCase()) 
+	        );
+	        return results;
+	    }
+
+	    function displayResults(results) {
+		    const searchResults = document.getElementById('searchResults');
+		    searchResults.innerHTML = '';
+		    results.forEach(result => {
+		        const link = document.createElement('a');
+		        link.textContent = result.title;
+		        link.href = result.url;
+		        const li = document.createElement('li');
+		        li.appendChild(link);
+		        searchResults.appendChild(li);
+		    });
+		    searchResults.style.display = results.length > 0 ? 'block' : 'none';
+		}
+
+	    document.getElementById('searchInput').addEventListener('input', function () {
+	        const query = this.value.trim();
+	        const results = search(query);
+	        displayResults(results);
+	    });
+
+	    document.getElementById('searchInput').addEventListener('keyup', function () {
+	        const query = this.value.trim();
+	        if (query === '') {
+	            const searchResults = document.getElementById('searchResults');
+	            searchResults.style.display = 'none';
+	        }
+	    });
+	</script>
+
+	<!-- carousel -->
+
+	<section class="carousel">
+		<div class="img-list" id="img-list">
+			<img src="images/slide-1.svg" alt="Carousel Image 1" class="active">
+			<img src="images/slide-2.svg" alt="Carousel Image 2">
+		</div>
+
+		<div class="btn-section">
+			<div class="caro-btn" onclick="slideImg(0)"></div>
+			<div class="caro-btn" onclick="slideImg(1)"></div>
+		</div>
+	</section>
+
+	<script type="text/javascript">
+		var imgList = document.getElementById("img-list");
+		var caroBtns = document.getElementsByClassName("caro-btn");
+
+		var position = 0;
+		var positionUit = -100;
+
+		function slideImg(x) {
+			var i;
+
+			for (i = 0; i < caroBtns.length; i++) {
+				caroBtns[i].style.backgroundColor = "rgba(84, 69, 65, 0.50)";
+			}
+			caroBtns[x].style.backgroundColor = "rgba(84, 69, 65, 0.80)";
+			position = x * positionUit;
+			imgList.style.left = position + "%";
+		}
+
+		caroBtns[0].style.backgroundColor = "rgba(84, 69, 65, 0.80)";
+
+		var currentIndex = 0;
+		setInterval(function() {
+			currentIndex = (currentIndex + 1) % caroBtns.length;
+			slideImg(currentIndex);
+		}, 5000);
+
+		imgList.style.transition = "opacity 5s ease-in-out";
+	</script>
+
+	<!-- must read articles - blog posts -->
+
+	<section id="must-read-articles-blog-posts">
+		<div class="must-read-articles-blog-posts-heading">
+			<span>must read articles</span>
+			<span class="blog-post-span2">blog posts</span>
+		</div>
+	</section>
+
+	<div class="blog-container">
+		<div class="blog-box">
+			<a href="article1.html">
+				<div class="blog-img">
+					<img src="images/blog-posts-img-1.png" alt="Blog Article 1">
+				</div>
+				<div class="blog-text">
+					<a href="article1.html" class="blog-title">Get The Glow... Spilling My Skin Secrets</a>
+					<p class="blog-article1-text">With it being my birthday month, I thought we could talk about youthfulness – particularly glowing youthful skin.</p>
+					<a href="article1.html" class="read-more1">read more<span class="read-more-arrow"><img src="images/arrow.svg"></span></a>
+				</div>
+			</a>
+		</div>
+
+		<div class="blog-box">
+			<a href="article2.html">
+				<div class="blog-img">
+					<img src="images/blog-posts-img-2.png" alt="Blog Article 2">
+				</div>
+				<div class="blog-text">
+					<a href="article2.html" class="blog-title">What to Eat If You're Feeling Tired</a>
+					<p class="blog-article1-text">Raise your hand if you are tired! Turns out, you're not alone. More and more people today are suffering from the effects of burnout.</p>
+					<a href="article2.html" class="read-more1">read more<span class="read-more-arrow"><img src="images/arrow.svg"></span></a>
+				</div>
+			</a>
+		</div>
+
+		<div class="blog-box">
+			<a href="article3.html">
+				<div class="blog-img">
+					<img src="images/blog-posts-img-3.png" alt="Blog Article 3">
+				</div>
+				<div class="blog-text">
+					<a href="article3.html" class="blog-title">The Earliest Signs of Menopause</a>
+					<p class="blog-article1-text">The earliest signs of menopause can start to appear well before you're ready. For some women, they can show up as early as age 35.</p>
+					<a href="article3.html" class="read-more1">read more<span class="read-more-arrow"><img src="images/arrow.svg"></span></a>
+				</div>
+			</a>
+		</div>
+	</div>
+
+	<!-- about the glow wellness -->
+
+	<section class="about-tgw-main-section">
+		<div class="about-bg-con">
+			<img class="tgw-about-main-section-con-img" src="images/tgw-about-main-img.svg">
+
+			<div class="about-tgw-main-section-content-con">
+				<img class="tgw-main-about-logo" src="images/about-tgw-main-section-content-con-img.png">
+
+				<p class="about-tgw-main-section-content-text-para">Is a transformative platform promoting mindfulness, peace of mind, and holistic health. Led by a Certified Holistic Health Expert and Wellness Expert, it empowers women to break free from diet culture through intuitive eating.<br><br>The focus is on fostering self awareness and trusting intuition, leading to a healthier, more connected self. The platform promises a genuine flow of health and happiness through a mindful approach to both the mind and body, inviting individuals to explore a life of food freedom and overall well-being.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- about heather -->
+
+	<section class="main-about-heather-section">
+    	<img src="images/heatherpfp.svg" class="heatherimage">
+    	<div class="about-heather">
+    		<h3>Hi! <i>I'm Heather</i></h3>
+    		<p>My journey of health and discovery began 20 years ago. Struggling with a stressful career and ongoing health issues, I vowed to do whatever possible to reclaim my life. Follow The Glow Wellness for resources to live a healthier life. </p>
+    		<a href="TGW-Services.html"><button class="workbutton">WORK WITH ME</button></a>
+    	</div>
+	</section>
+
+    <!-- browsing category - read my articles -->
+
+    <section id="browse-cat-main-section">
+        <div class="browse-cat-main-con">
+            <span>browsing category</span>
+            <span class="browse-cat-span2">read my articles</span>
+        </div>
+
+        <div class="browse-cat-container">
+            <div class="browse-cat-box">
+                <div class="browse-cat-img">
+                    <img src="images/browse-cat-lifestyle.svg" alt="Category 1" class="category" data-category="category1">
+                </div>
+            </div>
+
+            <div class="browse-cat-box">
+                <div class="browse-cat-img">
+                    <img src="images/browse-cat-wellness.svg" alt="Category 2" class="category" data-category="category2">
+                </div>
+            </div>
+
+            <div class="browse-cat-box">
+                <div class="browse-cat-img">
+                    <img src="images/browse-cat-food.svg" alt="Category 3" class="category" data-category="category3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+	<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const categories = document.querySelectorAll('.category');
+
+            categories.forEach(category => {
+                category.addEventListener('click', function() {
+                    const clickedCategory = this.getAttribute('data-category');
+                    localStorage.setItem('selectedCategory', clickedCategory);
+                    window.location.href = 'TGW-Blog.html';
+                });
+            });
+
+            const blogMenu = document.getElementById('blogMenu');
+            blogMenu.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.location.href = 'TGW-Blog.html';
+            });
+        });
+    </script>
+
+	<div>
+		<img src="images/brands.svg" class="collabimg">
+	</div>
+
+	<div class="igimgs">
+		<div class="igimg">
+			<a href="https://www.instagram.com/p/C4YRZuXO2ay/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig1.svg" alt="Instagram Post 1">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/reel/C4LfMA5rNbv/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig2.svg" alt="Instagram Post 2">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/p/C3VI6oJuz6l/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig3.svg" alt="Instagram Post 3">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/reel/C1ITCiRqY6A/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig4.svg" alt="Instagram Post 4">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/p/C3kvG-ehRfC/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig5.svg" alt="Instagram Post 5">
+			</a>
+		</div>
+	</div>
+
+	<footer>
+		<ul class="social-icon">
+			<li><a href="mailto:heather@theglowwellness.com" target="_blank">
+				<img src="images/email-icon.svg"></a></li>
+			<li><a href="https://www.facebook.com/theglowwellness/" target="_blank">
+				<img src="images/fb-icon.svg"></a></li>
+			<li><a href="https://www.instagram.com/theglowwellness/" target="_blank">
+				<img src="images/ig-icon.svg"></a></li>
+		</ul>
+
+		<ul class="footer-menu">
+			<li><a href="TGW-About.html">About</a></li>
+			<li><a href="TGW-Services.html">Services</a></li>
+			<li><a href="TGW-Blog.html">Blog</a></li>
+			<li><a href="TGW-Contact.html">Contact</a></li>
+			<li><a href="TGW-Brands.html">Brands</a></li>
+		</ul>
+
+		<p class="footer-p">The Glow Wellness 2024 © All Rights Reserved</p>
+	</footer>
+</body>
+</html>

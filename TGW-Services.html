@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Services - The Glow Wellness</title>
+	<link rel="stylesheet" type="text/css" href="services.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+	<link rel="shortcut icon" href="images/tgw-fav-icon.svg">
+</head>
+<body>
+	<header>
+		<a href="TGW-Main.html" class="tgw-logo">
+			<img src="images/tgw-logo.svg">
+		</a>
+		
+		<div class="menu-group">
+			<ul class="navigation">
+				<li class="item"><a href="TGW-About.html">About</a></li>
+				<li class="aboutMenuColor"><a href="TGW-Services.html">Services</a></li>
+				<li class="item"><a href="TGW-Blog.html">Blog</a></li>
+				<li class="item"><a href="TGW-Contact.html">Contact</a></li>
+				<li class="item"><a href="TGW-Brands.html">Brands</a></li>
+			</ul>
+			<div class="search">
+				<span class="search-icon">
+					<ion-icon name="search-outline" class="searchBtn"></ion-icon>
+					<ion-icon name="close-outline" class="closeBtn"></ion-icon>
+				</span>
+			</div>
+			<ion-icon name="menu-outline" class="menuToggle"></ion-icon>
+		</div>
+		<div class="searchBox">
+	        <input type="text" id="searchInput" placeholder="Search here...">
+	        <ul id="searchResults">
+	        	<!-- <li><a href="article1.html">Get The Glow... Spilling My Skin Secrets</a></li>
+	            <li><a href="article2.html">What to Eat If You’re Feeling Tired</a></li>
+	            <li><a href="article2.html">The Earliest Signs of Menopause</a></li> -->
+	            <!-- Search results will be displayed here -->
+	        </ul>
+	    </div>	
+	</header>
+
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+	<script>
+		let searchBtn = document.querySelector('.searchBtn');
+		let closeBtn = document.querySelector('.closeBtn');
+		let searchBox = document.querySelector('.searchBox');
+		let navigation = document.querySelector('.navigation');
+		let menuToggle = document.querySelector('.menuToggle');
+		let header = document.querySelector('header');
+
+		searchBtn.onclick = function(){
+			searchBox.classList.add('active');
+			closeBtn.classList.add('active');
+			searchBtn.classList.add('active');
+			menuToggle.classList.add('hide');
+			header.classList.remove('open');
+		}
+
+		closeBtn.onclick = function(){
+			searchBox.classList.remove('active');
+			closeBtn.classList.remove('active');
+			searchBtn.classList.remove('active');
+			menuToggle.classList.remove('hide');
+		}
+
+		menuToggle.onclick = function(){
+			header.classList.toggle('open');
+			searchBox.classList.remove('active');
+			closeBtn.classList.remove('active');
+			searchBtn.classList.remove('active');
+		}
+
+	    const articles = [
+	        { 
+	            title: "Get The Glow... Spilling My Skin Secrets", 
+	            content: "With it being my birthday month, I thought we could talk about youthfulness – particularly glowing youthful skin.", 
+	            url: "article1.html" 
+	        },
+	        { 
+	            title: "What to Eat If You’re Feeling Tired", 
+	            content: "Raise your hand if you are tired! Turns out, you’re not alone. More and more people today are suffering from the effects of burnout.", 
+	            url: "article2.html" 
+	        },
+	        { 
+	            title: "The Earliest Signs of Menopause", 
+	            content: "The earliest signs of menopause can start to appear well before you’re ready. For some women, they can show up as early as age 35.", 
+	            url: "article3.html" 
+	        }
+	    ];
+
+	    function search(query) {
+	        const results = articles.filter(article =>
+	            article.title.toLowerCase().includes(query.toLowerCase()) 
+	        );
+	        return results;
+	    }
+
+	    function displayResults(results) {
+		    const searchResults = document.getElementById('searchResults');
+		    searchResults.innerHTML = '';
+		    results.forEach(result => {
+		        const link = document.createElement('a');
+		        link.textContent = result.title;
+		        link.href = result.url;
+		        const li = document.createElement('li');
+		        li.appendChild(link);
+		        searchResults.appendChild(li);
+		    });
+		    searchResults.style.display = results.length > 0 ? 'block' : 'none';
+		}
+
+	    document.getElementById('searchInput').addEventListener('input', function () {
+	        const query = this.value.trim();
+	        const results = search(query);
+	        displayResults(results);
+	    });
+
+	    document.getElementById('searchInput').addEventListener('keyup', function () {
+	        const query = this.value.trim();
+	        if (query === '') {
+	            const searchResults = document.getElementById('searchResults');
+	            searchResults.style.display = 'none';
+	        }
+	    });
+	</script>
+
+	<section class="services-bg">
+		<img src="images/services-bg.svg" class="main-img">
+		<div class="services-text">
+			<i>Transformative Wellness for Brands</i>
+			<h5>Discover the glow from within with The Glow Wellness</h5>
+		</div>
+	</section>
+
+	<section class="brand-marquee">
+   		<div class="marquee-container">
+	        <div class="marquee">
+	            <p>The Glow Wellness</p>
+	            <p>Heather Ertel</p>
+	            <p>The Glow Wellness</p>
+	            <p>Heather Ertel</p>
+	            <p>The Glow Wellness</p>
+	            <p>Heather Ertel</p>
+	            <p>The Glow Wellness</p>
+	            <p>Heather Ertel</p>
+	            <p>The Glow Wellness</p>
+	        </div>
+        </div>
+    </section>
+
+	<section class="second-container"> 
+		<div class="left-tbox">
+			<h2><i>Discover a solution tailored to your needs</i></h2>
+		</div>
+
+  		<div class="right-tbox">
+  			<h3>DOES THIS SOUND LIKE YOU?</h3>
+  			<br><br>
+  			<p>Do you run a wellness-focused company and find it challenging to curate engaging recipes and content for your audience?</p>
+  			<br>
+  			<p>Are you struggling to align your brand with a wellness creator who understands the importance of a holistic lifestyle approach?</p>
+  			<br>
+  			<p>Do you wish to collaborate with an integrative health coach who can seamlessly integrate wellness principles into your brand's narrative?</p>
+  		</div>
+  	</section>
+
+	<section class="services-section">
+		<img src="images/sbg-image.svg" alt="Services Background Image">
+
+		<div class="services-con">
+			<div class="service-box">
+				<h4>Product Exposure</h4>
+				<p>Following a meticulous evaluation process to ensure compatibility, we offer a strategic approach to product exposure. Upon determining the suitability of your product, we collaborate to devise a distinctive integration plan, seamlessly incorporating it into our blog and/or social media platforms to maximize visibility and impact.</p>
+				<a href="TGW-Contact.html"><button class="workwithmebutton">Work with Me</button></a>
+			</div>
+
+			<div class="service-box">
+				<h4>Recipe Curation</h4>
+				<p>I specialize in creating innovative, health-conscious recipes, focusing on gluten-free, dairy-free, and sugar-free options. Tailoring each recipe to your brand's unique products, I also offer professional photography services with or without product integration. My expertise has been trusted by nationally recognized health and wellness brands such as Banza, Malk, Health Warrior, and Pop & Bottle.</p>
+				<a href="TGW-Contact.html"><button class="workwithmebutton">Work with Me</button></a>
+			</div>
+
+			<div class="service-box">
+				<h4>Wellness Content</h4>
+				<p>My profound commitment to the wellness industry has driven me to meticulously explore cutting-edge trends in health, wellness, and fitness. I am enthusiastic about the opportunity to craft exclusive content tailored specifically for your brand. Additionally, I am pleased to offer ghostwriting services for your blog, ensuring the delivery of expertly curated and engaging material that aligns seamlessly with your brand's ethos.</p>
+				<a href="TGW-Contact.html"><button class="workwithmebutton">Work with Me</button></a>
+			</div>
+
+			<div class="service-box">
+				<h4>Corporate Wellness</h4>
+				<p>I am available for corporate seminars and events around all things health and wellness. I am happy to design a specific program for your company or speak to a specific topic.</p>
+				<a href="TGW-Contact.html"><button class="workwithmebutton">Work with Me</button></a>
+			</div>
+
+			<div class="service-box">
+				<h4>Other Special Campaigns</h4>
+				<p>Have something else in mind? I’d love to hear it! The possibilities for collaboration are endless, and I am more than open to coming up with new and exciting ways to work with you.</p>
+				<a href="TGW-Contact.html"><button class="workwithmebutton">Work with Me</button></a>
+			</div>
+		</div>
+	</section>
+
+	<div>
+		<img src="images/brands.svg" class="collabimg">
+	</div>
+
+	<div class="igimgs">
+		<div class="igimg">
+			<a href="https://www.instagram.com/p/C4YRZuXO2ay/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig1.svg" alt="Instagram Post 1">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/reel/C4LfMA5rNbv/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig2.svg" alt="Instagram Post 2">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/p/C3VI6oJuz6l/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig3.svg" alt="Instagram Post 3">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/reel/C1ITCiRqY6A/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig4.svg" alt="Instagram Post 4">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/p/C3kvG-ehRfC/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig5.svg" alt="Instagram Post 5">
+			</a>
+		</div>
+	</div>
+
+	<footer>
+		<ul class="social-icon">
+			<li><a href="mailto:heather@theglowwellness.com" target="_blank">
+				<img src="images/email-icon.svg"></a></li>
+			<li><a href="https://www.facebook.com/theglowwellness/" target="_blank">
+				<img src="images/fb-icon.svg"></a></li>
+			<li><a href="https://www.instagram.com/theglowwellness/" target="_blank">
+				<img src="images/ig-icon.svg"></a></li>
+		</ul>
+
+		<ul class="footer-menu">
+			<li><a href="TGW-About.html">About</a></li>
+			<li><a href="TGW-Services.html">Services</a></li>
+			<li><a href="TGW-Blog.html">Blog</a></li>
+			<li><a href="TGW-Contact.html">Contact</a></li>
+			<li><a href="TGW-Brands.html">Brands</a></li>
+		</ul>
+
+		<p class="footer-p">The Glow Wellness 2024 © All Rights Reserved</p>
+	</footer>
+</body>
+</html>

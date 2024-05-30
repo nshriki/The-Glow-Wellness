@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Brands - The Glow Wellness</title>
+	<link rel="stylesheet" type="text/css" href="brands.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+	<link rel="shortcut icon" href="images/tgw-fav-icon.svg">
+</head>
+<body>
+	<header>
+		<a href="TGW-Main.html" class="tgw-logo">
+			<img src="images/tgw-logo.svg">
+		</a>
+		
+		<div class="menu-group">
+			<ul class="navigation">
+				<li class="item"><a href="TGW-About.html">About</a></li>
+				<li class="item"><a href="TGW-Services.html">Services</a></li>
+				<li class="item"><a href="TGW-Blog.html">Blog</a></li>
+				<li class="item"><a href="TGW-Contact.html">Contact</a></li>
+				<li class="aboutMenuColor"><a href="TGW-Brands.html">Brands</a></li>
+			</ul>
+			<div class="search">
+				<span class="search-icon">
+					<ion-icon name="search-outline" class="searchBtn"></ion-icon>
+					<ion-icon name="close-outline" class="closeBtn"></ion-icon>
+				</span>
+			</div>
+			<ion-icon name="menu-outline" class="menuToggle"></ion-icon>
+		</div>
+		<div class="searchBox">
+	        <input type="text" id="searchInput" placeholder="Search here...">
+	        <ul id="searchResults">
+	        	<!-- <li><a href="article1.html">Get The Glow... Spilling My Skin Secrets</a></li>
+	            <li><a href="article2.html">What to Eat If You’re Feeling Tired</a></li>
+	            <li><a href="article2.html">The Earliest Signs of Menopause</a></li> -->
+	            <!-- Search results will be displayed here -->
+	        </ul>
+	    </div>	
+	</header>
+
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+	<script>
+		let searchBtn = document.querySelector('.searchBtn');
+		let closeBtn = document.querySelector('.closeBtn');
+		let searchBox = document.querySelector('.searchBox');
+		let navigation = document.querySelector('.navigation');
+		let menuToggle = document.querySelector('.menuToggle');
+		let header = document.querySelector('header');
+
+		searchBtn.onclick = function(){
+			searchBox.classList.add('active');
+			closeBtn.classList.add('active');
+			searchBtn.classList.add('active');
+			menuToggle.classList.add('hide');
+			header.classList.remove('open');
+		}
+
+		closeBtn.onclick = function(){
+			searchBox.classList.remove('active');
+			closeBtn.classList.remove('active');
+			searchBtn.classList.remove('active');
+			menuToggle.classList.remove('hide');
+		}
+
+		menuToggle.onclick = function(){
+			header.classList.toggle('open');
+			searchBox.classList.remove('active');
+			closeBtn.classList.remove('active');
+			searchBtn.classList.remove('active');
+		}
+
+	    const articles = [
+	        { 
+	            title: "Get The Glow... Spilling My Skin Secrets", 
+	            content: "With it being my birthday month, I thought we could talk about youthfulness – particularly glowing youthful skin.", 
+	            url: "article1.html" 
+	        },
+	        { 
+	            title: "What to Eat If You’re Feeling Tired", 
+	            content: "Raise your hand if you are tired! Turns out, you’re not alone. More and more people today are suffering from the effects of burnout.", 
+	            url: "article2.html" 
+	        },
+	        { 
+	            title: "The Earliest Signs of Menopause", 
+	            content: "The earliest signs of menopause can start to appear well before you’re ready. For some women, they can show up as early as age 35.", 
+	            url: "article3.html" 
+	        }
+	    ];
+
+	    function search(query) {
+	        const results = articles.filter(article =>
+	            article.title.toLowerCase().includes(query.toLowerCase()) 
+	        );
+	        return results;
+	    }
+
+	    function displayResults(results) {
+		    const searchResults = document.getElementById('searchResults');
+		    searchResults.innerHTML = '';
+		    results.forEach(result => {
+		        const link = document.createElement('a');
+		        link.textContent = result.title;
+		        link.href = result.url;
+		        const li = document.createElement('li');
+		        li.appendChild(link);
+		        searchResults.appendChild(li);
+		    });
+		    searchResults.style.display = results.length > 0 ? 'block' : 'none';
+		}
+
+	    document.getElementById('searchInput').addEventListener('input', function () {
+	        const query = this.value.trim();
+	        const results = search(query);
+	        displayResults(results);
+	    });
+
+	    document.getElementById('searchInput').addEventListener('keyup', function () {
+	        const query = this.value.trim();
+	        if (query === '') {
+	            const searchResults = document.getElementById('searchResults');
+	            searchResults.style.display = 'none';
+	        }
+	    });
+	</script>
+
+	<section class="brands-bg">
+		<img src="images/brands-bg.svg" class="brands-img">
+		<div class="brands-text">
+			<i>I would love to hear from you!</i>
+			<h5>I cherish your feedback and welcome any inquiries about additional support<br>or services. Connect with me here, and I look forward to assisting you.<br><br><br>Warm regards,<br>Heather</h5>
+		</div>
+	</section>
+
+	<section class="brand-marquee">
+   		<div class="marquee-container">
+	        <div class="marquee">
+	            <p>The Glow Wellness</p>
+	            <p>Heather Ertel</p>
+	            <p>The Glow Wellness</p>
+	            <p>Heather Ertel</p>
+	            <p>The Glow Wellness</p>
+	            <p>Heather Ertel</p>
+	            <p>The Glow Wellness</p>
+	            <p>Heather Ertel</p>
+	            <p>The Glow Wellness</p>
+	        </div>
+        </div>
+    </section>
+
+    <div class="browse-brand-container">
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/sakara.png" alt="Image 1">
+				<div class="overlay">
+					<p>Save 20% off anything with</p>
+					<p>code <p1>XOHEATHERE</p1></p>
+					<br>
+					<a href="https://www.sakara.com/?utm_source=pepperjam&utm_medium=affiliate&publisherId=190902&clickId=4715897407"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/fuelmeals.png" alt="Image 2">
+				<div class="overlay">
+					<p>Fuel Meals delivers fresh, protein</p>
+					<p>packed meals to your door. For your</p>
+					<p>first order, use code <p1>Glow100</p1> and</p>
+					<p>recieve $100 off your first</p>
+					<p>four weeks!</p>
+					<br>
+					<a href="https://www.fuelmeals.com/"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/amy.png" alt="Image 3">
+				<div class="overlay">
+					<p>Amy Meyers is revolutionizing</p>
+					<p>health with supplements for immune,</p>
+					<p>metabolism, weight loss, and more</p>
+					<p>Use code <p1>IFHEATHER10</p1> for</p>
+					<p>$10 off the entire site</p>
+					<br>
+					<a href="httphttps://www.amymyersmd.com/supplements"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/magicspoon.png" alt="Image 4">
+				<div class="overlay">
+					<p>Magic Spoon offers nostalgic,</p>
+					<p>plant-based cereals: gluten-free,</p>
+					<p>sugar-free, high-protein, keto-</p>
+					<p>friendly. Use code <p1>GLOWWW</p1></p>
+					<br>
+					<a href="https://magicspoon.com/"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/alala.svg" alt="Image 5">
+				<div class="overlay">
+					<p>I love Alala for it’s cutting</p>
+					<p>edge athleisure and workout</p>
+					<p>wear. Save 20% off any order</p>
+					<p>with code <p1>GlowWellness</p1></p>
+					<br>
+					<a href="https://alalastyle.com/theglowwellness"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/frank.svg" alt="Image 6">
+				<div class="overlay">
+					<p>I explain this brand as the</p>
+					<p>epitome of effortless chic. I was</p>
+					<p>so excited when they offered</p>
+					<p>me a discount code to share.</p>
+					<p><p1>Shop now for 15% off</p1></p>
+					<br>
+					<a href="https://www.frankandeileen.com/"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/western.svg" alt="Image 7">
+				<div class="overlay">
+					<p>Experience the essence of</p>
+					<p>perfection with their meticulously</p>
+					<p>crafted, versatile pieces.</p>
+					<p>Use code <p1>TGW15</p1> to save 15%.</p>
+					<br>
+					<a href="https://westernrise.com/"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/split.png" alt="Image 8">
+				<div class="overlay">
+					<p>Fresh, contemporary active</p>
+					<p>wear. Save 20% off any order</p>
+					<p>swith code <p1>GLOW</p1></p>
+					<br>
+					<a href="https://www.splits59.com/?country=PH"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/amazon.svg" alt="Image 9">
+				<div class="overlay">
+					<p>Discover My Favorite Products</p>
+					<br>
+					<a href="https://www.amazon.com/shop/Theglowwellness"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/kit.svg" alt="Image 10">
+				<div class="overlay">
+					<p>Discover the enduring comfort and</p>
+					<p>versatility of Kit and Ace's</p>
+					<p>Smart clothing. Perfect for travel.</p>
+					<p>Use code <p1>TheGlowWellness</p1> and</p>
+					<p>save on anything!</p>
+					<br>
+					<a href="https://www.kitandace.com/theglowwellness"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/bulletproof.svg" alt="Image 11">
+				<div class="overlay">
+					<p>I was one of the first adopters</p>
+					<p>of Bulletproof coffee but now their</p>
+					<p>line encompasses, collagen, supplements</p>
+					<p>for sleep and performance and more.</p>
+					<p>Use code <p1>BPGLOW</p1> to save 10%</p>
+					<br>
+					<a href="https://shop.bulletproof.com/?irgwc=1&utm_source=impact&utm_medium=paid_affiliate&utm_campaign=2210654&utm_content=The%20Glow%20Wellness_Online%20Tracking%20Link_ONLINE_TRACKING_LINK&clickid=x7o2d5SsvxyPUwozlyT1D0FNUkHR8vz%3AfxTSUY0"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/state.svg" alt="Image 12">
+				<div class="overlay">
+					<p>Optimal athletic wear for</p>
+					<p>men, engineered for stretch</p>
+					<p>and comfort. Shop Mr. Glow's</p>
+					<p>favorite line. Save 10% with</p>
+					<p>code <p1>HEATHER123</p1></p>
+					<br>
+					<a href="https://stateandliberty.com/?rfsn=3477443.03169e&utm_source=refersion&utm_medium=affiliate&utm_campaign=3477443.03169e"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/goli.svg" alt="Image 12">
+				<div class="overlay">
+					<p>Clients love Goli Nutrition for its</p>
+					<p>diverse range of wellness gummies</p>
+					<p>including apple cider vinegar,</p>
+					<p>multivitamins, and supplements.</p>
+					<br>
+					<p>My personal favorite is their apple</p>
+					<p>cider vinegar gummies, it supports</p>
+					<p>digestion, gut health, and appetite.</p>
+					<p>Use code <p1>TheGlowWellness</p1> to save 10%.</p>
+					<br>
+					<a href="https://goli.com/?discount_code=theglowwellness"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/superfoods.svg" alt="Image 14">
+				<div class="overlay">
+					<p>Top-quality protein and</p>
+					<p>superfood powders. Save 15%</p>
+					<p>with code <p1>GLOWWELL</p1></p>
+					<br>
+					<a href="https://yoursuper.com/?rfsn=3334276.728c62&utm_source=refersion&utm_medium=affiliate&utm_campaign=3334276.728c62"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/pique.svg" alt="Image 15">
+				<div class="overlay">
+					<p>Pique offers unmatched purity</p>
+					<p>in matcha. Now introducing</p>
+					<p>liposomal Vitamin C with</p>
+					<p>elderberry enhanced immunity.</p>
+					<p>Shop now and <p1>SAVE 10%</p1></p>
+					<br>
+					<a href="https://www.piquelife.com/?rfsn=5304856.9b94aad&utm_source=affiliate"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="browse-brand-box">
+			<div class="browse-brand-img">
+				<img src="images/skinny.svg" alt="Image 16">
+				<div class="overlay">
+					<p>Lauryn Bosstick redefines beauty with</p>
+					<p>innovative tools. From ice rollers</p>
+					<p>to facial razors, glow effortlessly.</p>
+					<p>Use coe <p1>Glow15</p1> and get 15% off</p>
+					<br>
+					<a href="https://shopskinnyconfidential.com/?sscid=41k8_did2w&"><p><u>SHOP NOW</u></p></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<img src="images/brands.svg" class="collabimg">
+	</div>
+
+	<div class="igimgs">
+		<div class="igimg">
+			<a href="https://www.instagram.com/p/C4YRZuXO2ay/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig1.svg" alt="Instagram Post 1">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/reel/C4LfMA5rNbv/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig2.svg" alt="Instagram Post 2">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/p/C3VI6oJuz6l/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig3.svg" alt="Instagram Post 3">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/reel/C1ITCiRqY6A/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig4.svg" alt="Instagram Post 4">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/p/C3kvG-ehRfC/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig5.svg" alt="Instagram Post 5">
+			</a>
+		</div>
+	</div>
+
+	<footer>
+		<ul class="social-icon">
+			<li><a href="mailto:heather@theglowwellness.com" target="_blank">
+				<img src="images/email-icon.svg"></a></li>
+			<li><a href="https://www.facebook.com/theglowwellness/" target="_blank">
+				<img src="images/fb-icon.svg"></a></li>
+			<li><a href="https://www.instagram.com/theglowwellness/" target="_blank">
+				<img src="images/ig-icon.svg"></a></li>
+		</ul>
+
+		<ul class="footer-menu">
+			<li><a href="TGW-About.html">About</a></li>
+			<li><a href="TGW-Services.html">Services</a></li>
+			<li><a href="TGW-Blog.html">Blog</a></li>
+			<li><a href="TGW-Contact.html">Contact</a></li>
+			<li><a href="TGW-Brands.html">Brands</a></li>
+		</ul>
+
+		<p class="footer-p">The Glow Wellness 2024 © All Rights Reserved</p>
+	</footer>
+</body>
+</html>

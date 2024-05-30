@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contact - The Glow Wellness</title>
+	<link rel="stylesheet" type="text/css" href="contact.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+	<link rel="shortcut icon" href="images/tgw-fav-icon.svg">
+</head>
+<body>
+	<header>
+		<a href="TGW-Main.html" class="tgw-logo">
+			<img src="images/tgw-logo.svg">
+		</a>
+		
+		<div class="menu-group">
+			<ul class="navigation">
+				<li class="item"><a href="TGW-About.html">About</a></li>
+				<li class="item"><a href="TGW-Services.html">Services</a></li>
+				<li class="item"><a href="TGW-Blog.html">Blog</a></li>
+				<li class="aboutMenuColor"><a href="TGW-Contact.html">Contact</a></li>
+				<li class="item"><a href="TGW-Brands.html">Brands</a></li>
+			</ul>
+			<div class="search">
+				<span class="search-icon">
+					<ion-icon name="search-outline" class="searchBtn"></ion-icon>
+					<ion-icon name="close-outline" class="closeBtn"></ion-icon>
+				</span>
+			</div>
+			<ion-icon name="menu-outline" class="menuToggle"></ion-icon>
+		</div>
+		<div class="searchBox">
+	        <input type="text" id="searchInput" placeholder="Search here...">
+	        <ul id="searchResults">
+	        	<!-- <li><a href="article1.html">Get The Glow... Spilling My Skin Secrets</a></li>
+	            <li><a href="article2.html">What to Eat If You’re Feeling Tired</a></li>
+	            <li><a href="article2.html">The Earliest Signs of Menopause</a></li> -->
+	            <!-- Search results will be displayed here -->
+	        </ul>
+	    </div>	
+	</header>
+
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+	<script>
+		let searchBtn = document.querySelector('.searchBtn');
+		let closeBtn = document.querySelector('.closeBtn');
+		let searchBox = document.querySelector('.searchBox');
+		let navigation = document.querySelector('.navigation');
+		let menuToggle = document.querySelector('.menuToggle');
+		let header = document.querySelector('header');
+
+		searchBtn.onclick = function(){
+			searchBox.classList.add('active');
+			closeBtn.classList.add('active');
+			searchBtn.classList.add('active');
+			menuToggle.classList.add('hide');
+			header.classList.remove('open');
+		}
+
+		closeBtn.onclick = function(){
+			searchBox.classList.remove('active');
+			closeBtn.classList.remove('active');
+			searchBtn.classList.remove('active');
+			menuToggle.classList.remove('hide');
+		}
+
+		menuToggle.onclick = function(){
+			header.classList.toggle('open');
+			searchBox.classList.remove('active');
+			closeBtn.classList.remove('active');
+			searchBtn.classList.remove('active');
+		}
+
+	    const articles = [
+	        { 
+	            title: "Get The Glow... Spilling My Skin Secrets", 
+	            content: "With it being my birthday month, I thought we could talk about youthfulness – particularly glowing youthful skin.", 
+	            url: "article1.html" 
+	        },
+	        { 
+	            title: "What to Eat If You’re Feeling Tired", 
+	            content: "Raise your hand if you are tired! Turns out, you’re not alone. More and more people today are suffering from the effects of burnout.", 
+	            url: "article2.html" 
+	        },
+	        { 
+	            title: "The Earliest Signs of Menopause", 
+	            content: "The earliest signs of menopause can start to appear well before you’re ready. For some women, they can show up as early as age 35.", 
+	            url: "article3.html" 
+	        }
+	    ];
+
+	    function search(query) {
+	        const results = articles.filter(article =>
+	            article.title.toLowerCase().includes(query.toLowerCase()) 
+	        );
+	        return results;
+	    }
+
+	    function displayResults(results) {
+		    const searchResults = document.getElementById('searchResults');
+		    searchResults.innerHTML = '';
+		    results.forEach(result => {
+		        const link = document.createElement('a');
+		        link.textContent = result.title;
+		        link.href = result.url;
+		        const li = document.createElement('li');
+		        li.appendChild(link);
+		        searchResults.appendChild(li);
+		    });
+		    searchResults.style.display = results.length > 0 ? 'block' : 'none';
+		}
+
+	    document.getElementById('searchInput').addEventListener('input', function () {
+	        const query = this.value.trim();
+	        const results = search(query);
+	        displayResults(results);
+	    });
+
+	    document.getElementById('searchInput').addEventListener('keyup', function () {
+	        const query = this.value.trim();
+	        if (query === '') {
+	            const searchResults = document.getElementById('searchResults');
+	            searchResults.style.display = 'none';
+	        }
+	    });
+	</script>
+
+	<section class="contact-bg">
+		<img src="images/contact-bg.svg" class="contact-img">
+		<div class="contact-text">
+			<i>I would love to hear from you!</i>
+			<h5>I cherish your feedback and welcome any inquiries about additional support<br>or services. Connect with me here, and I look forward to assisting you.<br><br><br>Warm regards,<br>Heather</h5>
+		</div>
+	</section>
+
+	<section class="brand-marquee">
+   		<div class="marquee-container">
+	        <div class="marquee">
+	            <p>The Glow Wellness</p>
+	            <p>Heather Ertel</p>
+	            <p>The Glow Wellness</p>
+	            <p>Heather Ertel</p>
+	            <p>The Glow Wellness</p>
+	            <p>Heather Ertel</p>
+	            <p>The Glow Wellness</p>
+	            <p>Heather Ertel</p>
+	            <p>The Glow Wellness</p>
+	        </div>
+        </div>
+    </section>
+
+	<section class="contact-container">
+		<form action="#">
+			<h1>Inquire Here</h1>
+			<div class="contact-line"></div>
+
+			<div class="input-section">
+				<label>Name : <span class="required-color">*</span></label>
+				<input type="text" id="name-input" class="itemUser">
+				<span id="name-error" class="hide required-color error-message">Invalid Input</span>
+				<span id="empty-name-error" class="hide required-color error-message">Name Cannot Be Empty</span>
+			</div>
+
+			<div class="email-phone-input">
+				<div class="input-section">
+					<label>Email : <span class="required-color">*</span></label>
+					<input type="email" id="email-input" class="itemUser">
+					<span id="email-error" class="hide required-color error-message">Invalid Email</span>
+					<span id="empty-email-error" class="hide required-color error-message">Email Cannot Be Empty</span>
+				</div>
+
+				<div class="select-box">
+					<label>Phone :</label>
+	        		<div class="selected-option">
+			            <div>
+			                <span class="iconify" data-icon="flag:gb-4x3"></span>
+			                <strong>+44</strong>
+			            </div>
+		            	<input type="tel" id="phone" name="tel" class="itemUser">
+		        	</div>
+		        	<span id="phone-error" class="hide required-color error-message">Invalid Phone Number</span>
+
+			        <div class="options">
+			            <input type="text" class="search-box" placeholder="Search Country Name">
+			            <ol>
+			            	
+			            </ol>
+			        </div>
+			    </div>
+
+			    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+				<script src="contact-phone.js"></script>
+			</div>
+
+			<div class="input-section">
+				<label>Subject :</label>
+				<input type="text" id="subject">
+			</div>
+
+			<div class="input-section">
+				<label>Message : <span class="required-color">*</span></label>
+
+				<textarea type="text" id="message-input" rows="5" class="itemUser"></textarea>
+				
+				<span id="message-error" class="hide required-color error-message">Invalid Input</span>
+				<span id="empty-message-error" class="hide required-color error-message">Message Cannot Be Empty</span>
+			</div>
+
+			<button id="submit-button" type="submit">Submit</button>
+		</form>
+
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function() {
+				let nameInput = document.getElementById("name-input");
+				let nameError = document.getElementById("name-error");
+				let emptyNameError = document.getElementById("empty-name-error");
+
+				let emailInput = document.getElementById("email-input");
+				let emailError = document.getElementById("email-error");
+				let emptyEmailError = document.getElementById("empty-email-error");
+
+				let phoneInput = document.getElementById("phone");
+				let phoneError = document.getElementById("phone-error");
+
+				let messageInput = document.getElementById("message-input");
+				let messageError = document.getElementById("message-error");
+				let emptyMessageError = document.getElementById("empty-message-error");
+
+				let submitButton = document.getElementById("submit-button");
+
+				let validClasses = document.getElementsByClassName("valid");
+				let invalidClasses = document.getElementsByClassName("error-border");
+
+				const textVerify = (text) => {
+					const regex = /^[a-zA-Z\s]{3,}$/;
+					return regex.test(text);
+				};
+
+				const phoneVerify = (number) => {
+					const regex = /^\+\d{4,15}$/;
+					return regex.test(number);
+				};
+
+				const emailVerify = (input) => {
+				    const regex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+				    return regex.test(input);
+				};
+
+				const messageVerify = (input) => input.trim().length > 0;
+
+				const emptyUpdate = (
+					inputReference,emptyErrorReference,
+					otherErrorReference
+				) => {
+					if (!inputReference.value.trim()){
+						emptyErrorReference.classList.remove("hide");
+						otherErrorReference.classList.add("hide");
+						inputReference.classList.add("error-border");
+					}
+					else {
+						emptyErrorReference.classList.add("hide");
+					}
+				};
+
+				const errorUpdate = (inputReference, errorReference) => {
+					errorReference.classList.remove("hide");
+					inputReference.classList.remove("valid");
+					inputReference.classList.add("error-border");
+				};
+
+				const validInput = (inputReference) => {
+					inputReference.classList.remove("error-border");
+					inputReference.classList.add("valid");
+				};
+
+				nameInput.addEventListener("input", () => {
+					if (textVerify(nameInput.value)) {
+						nameError.classList.add("hide");
+						validInput(nameInput);
+					} else {
+						errorUpdate(nameInput, nameError);
+						emptyUpdate(nameInput, emptyNameError, nameError);
+					}
+				});
+
+				emailInput.addEventListener("input", () => {
+					if (emailVerify(emailInput.value)) {
+						emailError.classList.add("hide");
+						validInput(emailInput);
+					} else {
+						errorUpdate(emailInput, emailError);
+						emptyUpdate(emailInput, emptyEmailError, emailError);
+					}
+				});
+
+				phoneInput.addEventListener("input", () => {
+					if (phoneVerify(phoneInput.value)) {
+						phoneError.classList.add("hide");
+						validInput(phoneInput);
+					} else {
+						errorUpdate(phoneInput, phoneError);
+					}
+				});
+
+				messageInput.addEventListener("input", () => {
+					if (messageVerify(messageInput.value)) {
+						messageError.classList.add("hide");
+						emptyMessageError.classList.add("hide");
+						validInput(messageInput);
+					} else {
+						errorUpdate(messageInput, messageError);
+						emptyUpdate(messageInput, emptyMessageError, messageError);
+					}
+				});
+			});
+		</script>
+
+		<script type="text/javascript">
+			const form = document.querySelector('form');
+			const nameUser = document.getElementById("name-input");
+			const emailUser = document.getElementById("email-input");
+			const phoneUser = document.getElementById("phone");
+			const subjectUser = document.getElementById("subject");
+			const messageUser = document.getElementById("message-input");
+
+			function sendEmail() {
+				const bodyMessage = `Name: ${nameUser.value}<br> Email: ${emailUser.value}<br> Phone: ${phoneUser.value}<br> Message: ${messageUser.value}`;
+
+				Email.send({
+					SecureToken : "a50d6882-f032-454e-bffa-cb13e2896b69",
+				    To : 'brensohon731@gmail.com',
+				    From : emailUser.value,
+				    Subject : subjectUser.value,
+				    Body : bodyMessage
+				}).then(
+				  message => {
+				  	if (message == "OK") {
+				  		Swal.fire({
+				  			title: "Success!",
+				  			text: "Message sent successfully!",
+				  			icon: "success"
+				  		});
+				  	} else {
+				  		Swal.fire({
+				  			title: "Error!",
+				  			text: "Failed to send message",
+				  			icon: "error"
+				  		});
+				  	}
+				  }
+				).catch(error => {
+					console.error('Error: ', error);
+					Swal.fire({
+				  			title: "Error!",
+				  			text: "Failed to send message",
+				  			icon: "error"
+				  		});
+				});
+			}
+
+			function checkInputs() {
+		        const itemsUser = document.querySelectorAll(".itemUser");
+		        const messageInput = document.getElementById("message-input");
+		        const emptyMessageError = document.getElementById("empty-message-error");
+
+		        for (const itemUser of itemsUser) {
+		            if (itemUser.value == "") {
+		                if (itemUser.id === "name-input") {
+		                    const emptyNameError = itemUser.parentElement.querySelector("#empty-name-error");
+		                    if (emptyNameError) emptyNameError.classList.remove("hide");
+		                } else if (itemUser.id === "email-input") {
+		                    const emptyEmailError = itemUser.parentElement.querySelector("#empty-email-error");
+		                    if (emptyEmailError) emptyEmailError.classList.remove("hide");
+		                } else if (itemUser.id === "message-input") {
+		                    if (messageInput.value.trim() === "") {
+		                        messageInput.classList.add("error-border");
+		                        if (emptyMessageError) emptyMessageError.classList.remove("hide");
+		                    }
+		                } else {
+		                    const errorMessage = itemUser.parentElement.querySelector(".error-message");
+		                    if (errorMessage) errorMessage.classList.add("hide");
+		                    if (messageInput.value.trim() !== "") {
+		                        messageInput.classList.remove("error-border");
+		                        if (emptyMessageError) emptyMessageError.classList.add("hide");
+		                    }
+		                }
+		                if (itemUser.id !== "phone" && itemUser.id !== "message-input") {
+		                    itemUser.classList.add("error-border");
+		                }
+		            } else {
+		                if (itemUser.id === "email-input") {
+		                    const emptyEmailError = itemUser.parentElement.querySelector("#empty-email-error");
+		                    if (emptyEmailError) emptyEmailError.classList.add("hide");
+		                } else {
+		                    const errorMessage = itemUser.parentElement.querySelector(".error-message");
+		                    if (errorMessage) errorMessage.classList.add("hide");
+		                }
+		                if (itemUser.id !== "phone" && itemUser.id !== "message-input") {
+		                    itemUser.classList.remove("error-border");
+		                }
+		            }
+		        }
+		    }
+
+			function checkEmail() {
+				const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+
+				if (!emailUser.value.match(emailRegex)) {
+					emailUser.classList.add("error-border");
+					emailUser.parentElement.classList.add("error-border");
+				}
+				else {
+					emailUser.classList.remove("error-border");
+					emailUser.parentElement.classList.remove("error-border");
+				}
+			}
+
+			form.addEventListener("submit", (e) => {
+		        e.preventDefault();
+		        checkInputs();
+		        if (!nameUser.classList.contains("error-border") && !emailUser.classList.contains("error-border") && !phoneUser.classList.contains("error-border") && !messageUser.classList.contains("error-border")) {
+		            sendEmail();
+		        }
+		    });
+		</script>
+
+		<script src="https://smtpjs.com/v3/smtp.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </section>
+    
+	<div>
+		<img src="images/brands.svg" class="collabimg">
+	</div>
+
+	<div class="igimgs">
+		<div class="igimg">
+			<a href="https://www.instagram.com/p/C4YRZuXO2ay/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig1.svg" alt="Instagram Post 1">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/reel/C4LfMA5rNbv/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig2.svg" alt="Instagram Post 2">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/p/C3VI6oJuz6l/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig3.svg" alt="Instagram Post 3">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/reel/C1ITCiRqY6A/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig4.svg" alt="Instagram Post 4">
+			</a>
+		</div>
+		<div class="igimg">
+			<a href="https://www.instagram.com/p/C3kvG-ehRfC/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank">
+				<img src="images/ig5.svg" alt="Instagram Post 5">
+			</a>
+		</div>
+	</div>
+
+	<footer>
+		<ul class="social-icon">
+			<li><a href="mailto:heather@theglowwellness.com" target="_blank">
+				<img src="images/email-icon.svg"></a></li>
+			<li><a href="https://www.facebook.com/theglowwellness/" target="_blank">
+				<img src="images/fb-icon.svg"></a></li>
+			<li><a href="https://www.instagram.com/theglowwellness/" target="_blank">
+				<img src="images/ig-icon.svg"></a></li>
+		</ul>
+
+		<ul class="footer-menu">
+			<li><a href="TGW-About.html">About</a></li>
+			<li><a href="TGW-Services.html">Services</a></li>
+			<li><a href="TGW-Blog.html">Blog</a></li>
+			<li><a href="TGW-Contact.html">Contact</a></li>
+			<li><a href="TGW-Brands.html">Brands</a></li>
+		</ul>
+
+		<p class="footer-p">The Glow Wellness 2024 © All Rights Reserved</p>
+	</footer>
+</body>
+</html>
